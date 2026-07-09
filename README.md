@@ -1,24 +1,28 @@
 # Mod Menu Web Addon
 
-A [Mod Menu](https://modrinth.com/mod/modmenu) addon for Fabric (Minecraft 26.2). For any
-installed mod whose `fabric.mod.json` is missing a description, website, issue tracker, source
-link, or icon, this addon looks the mod up on [Modrinth](https://modrinth.com) and, optionally,
-[CurseForge](https://curseforge.com), and fills in whatever it finds.
+Mod Menu addon that fills in missing mod descriptions, websites, issue trackers, source links, and
+icons by looking them up on Modrinth and CurseForge.
+
+Ever open Mod Menu and see a mod with no icon, no description, and no links? This addon fixes
+that. For any installed mod whose `fabric.mod.json` is missing a description, website, issue
+tracker, source link, or icon, Mod Menu Web Addon looks the mod up on
+[Modrinth](https://modrinth.com) and, optionally, [CurseForge](https://curseforge.com), and fills
+in whatever it finds — directly in Mod Menu's mod list and info screens. No other mod needs to
+change anything; it works automatically in the background.
 
 ## Features
 
-- Fills in missing description, website, issue tracker, source link, and icon in Mod Menu's mod
-  list and mod info screens.
-- Modrinth lookups work out of the box (public, unauthenticated API).
-- CurseForge lookups are opt-in: paste your own free [Core API
-  key](https://console.curseforge.com/) into `config/modmenuwebaddon.json` to enable them.
-  CurseForge's terms don't allow redistributing a shared key, so there's no key baked into the
-  mod itself.
-- Results are cached to disk (`config/modmenuwebaddon/`) for 7 days by default, so it won't
-  re-query the network every launch.
-- Skips mods that don't need it: built-in pseudo-mods (`minecraft`, `java`), Fabric API's dozens
-  of sub-modules (already collapsed under one entry in Mod Menu), and jar-in-jar nested/library
-  mods that have no real listing of their own.
+- **Automatic Modrinth lookups** — works out of the box, no setup, no API key required.
+- **Optional CurseForge lookups** — bring your own free [Core API
+  key](https://console.curseforge.com/) (CurseForge's terms don't allow bundling a shared key, so
+  this is opt-in) to also check CurseForge for anything Modrinth couldn't find.
+- **Smart skipping** — doesn't waste time or bandwidth on mods that don't need it: Minecraft/Java
+  themselves, Fabric API's many sub-modules (already grouped under one entry in Mod Menu), and
+  bundled library mods with no real listing of their own.
+- **Cached results** — lookups are saved to disk for a week by default, so it won't hit the
+  network on every launch.
+- **Never overwrites what's already there** — only fills in gaps; a mod's own declared
+  description, links, and icon always take priority.
 
 ## Configuration
 
@@ -35,6 +39,13 @@ link, or icon, this addon looks the mod up on [Modrinth](https://modrinth.com) a
   "cacheTtlHours": 168
 }
 ```
+
+## Requirements
+
+- Minecraft 26.2
+- Fabric Loader
+- Fabric API
+- Mod Menu
 
 ## Building
 
