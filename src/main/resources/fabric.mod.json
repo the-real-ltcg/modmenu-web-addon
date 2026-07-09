@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${version}",
+  "name": "${mod_name}",
+  "description": "Mod Menu addon that fills in missing mod icons, descriptions and links (website, issue tracker, source) by looking them up on Modrinth and, optionally, CurseForge.",
+  "authors": ["the-real-ltcg"],
+  "contact": {},
+  "license": "${mod_license}",
+  "icon": "assets/${mod_id}/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["com.ltcg.modmenuwebaddon.ModMenuWebAddonClient"]
+  },
+  "mixins": ["modmenuwebaddon.mixins.json"],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "modmenu": "*",
+    "minecraft": ">=${minecraft_version}"
+  }
+}

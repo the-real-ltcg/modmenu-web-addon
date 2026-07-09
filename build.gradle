@@ -1,0 +1,52 @@
+plugins {
+	id 'net.fabricmc.fabric-loom' version "${loom_version}"
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+	archivesName = project.archives_base_name
+}
+
+repositories {
+	maven { url "https://maven.terraformersmc.com/releases/" }
+}
+
+dependencies {
+	// New (non-remapping) Loom for 26.x, so mod deps use standard configurations, not modImplementation.
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+	api "com.terraformersmc:modmenu:${project.modmenu_version}"
+}
+
+processResources {
+	inputs.property "version", project.version
+	inputs.property "mod_id", project.mod_id
+	inputs.property "mod_name", project.mod_name
+	inputs.property "mod_license", project.mod_license
+	inputs.property "loader_version", project.loader_version
+	inputs.property "minecraft_version", project.minecraft_version
+
+	filesMatching("fabric.mod.json") {
+		expand(
+			"version": inputs.properties.version,
+			"mod_id": inputs.properties.mod_id,
+			"mod_name": inputs.properties.mod_name,
+			"mod_license": inputs.properties.mod_license,
+			"loader_version": inputs.properties.loader_version,
+			"minecraft_version": inputs.properties.minecraft_version
+		)
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 25
+}
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_25
+	targetCompatibility = JavaVersion.VERSION_25
+}

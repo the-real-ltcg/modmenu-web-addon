@@ -1,0 +1,16 @@
+# gradle
+.gradle/
+build/
+out/
+
+# dev run environment (game assets, logs, saves, downloaded mods)
+run/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
