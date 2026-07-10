@@ -5,7 +5,11 @@
   "name": "${mod_name}",
   "description": "Mod Menu addon that fills in missing mod icons, descriptions and links (website, issue tracker, source) by looking them up on Modrinth and, optionally, CurseForge.",
   "authors": ["the-real-ltcg"],
-  "contact": {},
+  "contact": {
+    "homepage": "https://github.com/the-real-ltcg/modmenu-web-addon",
+    "issues": "https://github.com/the-real-ltcg/modmenu-web-addon/issues",
+    "sources": "https://github.com/the-real-ltcg/modmenu-web-addon"
+  },
   "license": "${mod_license}",
   "icon": "assets/${mod_id}/icon.png",
   "environment": "client",
